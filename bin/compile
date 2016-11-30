@@ -92,7 +92,7 @@ sed -i 's/\${gallery\.config\.baseUrl}/\${window\.location\.origin}\/elkhorn\/wi
 rm -rf .git
 
 # Get environment variables from env_dir
-export "$(cat $3/ASK_AUTH)"
+export ASK_AUTH="$(cat $3/ASK_AUTH)"
 
 cat << EOF >> public/config.json
 {
