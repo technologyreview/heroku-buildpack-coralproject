@@ -102,7 +102,7 @@ cat << EOF >> public/config.json
   "brand": "Coral Project",
   "googleAnalyticsId": "UA-12345678-9",
   "requireLogin": true,
-  "basicAuthorization": "",
+  "basicAuthorization": "${ASK_AUTH}",
   "features": {
     "trust": false,
     "ask": true
@@ -111,9 +111,6 @@ cat << EOF >> public/config.json
   "proxy": true
 }
 EOF
-
-# Enable basic http auth
-sed -i "s/  \"basicAuthorization\": \"\",/  \"basicAuthorization\": \"${ASK_AUTH}\",/g" public/config.json
 
 npm install
 cd $BUILD
