@@ -93,7 +93,7 @@ rm -rf .git
 
 # Get environment variables from env_dir
 export_env_dir() {
-  env_dir=$1
+  env_dir=$3
   whitelist_regex=${2:-''}
   blacklist_regex=${3:-'^(ASK_AUTH)$'}
   if [ -d "$env_dir" ]; then
