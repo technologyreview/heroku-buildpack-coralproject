@@ -113,7 +113,7 @@ cat << EOF >> public/config.json
 EOF
 
 # Enable basic http auth
-sed -i -e "s/  \"basicAuthorization\": \"\",/  \"basicAuthorization\": \"${ASK_AUTH}\",/g" public/config.json
+sed -i "s/  \"basicAuthorization\": \"\",/  \"basicAuthorization\": \"${ASK_AUTH}\",/g" public/config.json
 
 npm install
 cd $BUILD
