@@ -91,7 +91,20 @@ sed -i 's/\${gallery\.config\.baseUrl}/\${window\.location\.origin}\/elkhorn\/wi
 
 rm -rf .git
 
-ASK_AUTH=$ASK_AUTH
+# Get environment variables from env_dir
+export_env_dir() {
+  env_dir=$1
+  whitelist_regex=${2:-''}
+  blacklist_regex=${3:-'^(ASK_AUTH)$'}
+  if [ -d "$env_dir" ]; then
+    for e in $(ls $env_dir); do
+      echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
+      export "$e=$(cat $env_dir/$e)"
+      :
+    done
+  fi
+}
+
 cat << EOF >> public/config.json
 {
   "xeniaHost": "http://0.0.0.0:16181",
