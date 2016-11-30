@@ -94,8 +94,8 @@ rm -rf .git
 # Get environment variables from env_dir
 export_env_dir() {
   env_dir=$3
-  whitelist_regex=${2:-''}
-  blacklist_regex=${3:-'^(ASK_AUTH)$'}
+  whitelist_regex=${2:-'ASK_AUTH'}
+  blacklist_regex=${3:-'^(SECRET)$'}
   if [ -d "$env_dir" ]; then
     for e in $(ls $env_dir); do
       echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
