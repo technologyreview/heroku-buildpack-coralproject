@@ -91,6 +91,7 @@ sed -i 's/\${gallery\.config\.baseUrl}/\${window\.location\.origin}\/elkhorn\/wi
 
 rm -rf .git
 
+ASK_AUTH=$ASK_AUTH
 cat << EOF >> public/config.json
 {
   "xeniaHost": "http://0.0.0.0:16181",
@@ -102,7 +103,7 @@ cat << EOF >> public/config.json
   "brand": "Coral Project",
   "googleAnalyticsId": "UA-12345678-9",
   "requireLogin": true,
-  "basicAuthorization": "${ASK_AUTH}",
+  "basicAuthorization": "$ASK_AUTH",
   "features": {
     "trust": false,
     "ask": true
